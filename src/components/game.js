@@ -10,11 +10,6 @@ import * as actions from '../actions/index';
 
 export class Game extends React.Component {
 
-  constructor() {
-    super()
-    this.genNumber = this.genNumber.bind(this)
-  }
-
   componentDidMount() {
     this.props.secretAnswer()
   }
