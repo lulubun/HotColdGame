@@ -5,7 +5,7 @@ import * as actions from '../actions/index';
 export class EnterGuess extends React.Component {
   constructor() {
     super()
-    this.onSubmit = this.onSubmit.bind(this)
+    //this.onSubmit = this.onSubmit.bind(this)
   }
 
   render() {
@@ -44,7 +44,7 @@ export class EnterGuess extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    mysteryNum: state.quizReducer.answer
+    mysteryNum: state.answer
 });
 
 const mapDispatchToProps = (dispatch) => ({

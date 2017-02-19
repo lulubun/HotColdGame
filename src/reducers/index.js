@@ -20,7 +20,7 @@ export const quizReducer = (state=initialState, action) => {
         return {...state, oldGuesses:action.oldGuesses, guessCount: state.guessCount++}
 
         case actions.DISPLAY_TEMP:
-        return {...state, temp: action.temp}
+        return {...state, tempText: action.temp}
 
         case actions.RESET_GAME:
         return {...state,

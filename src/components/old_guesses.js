@@ -13,7 +13,7 @@ export class OldGuesses extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  guesses: state.quizReducer.oldGuesses
+  guesses: state.oldGuesses
 });
 
 export default connect(mapStateToProps)(OldGuesses);
