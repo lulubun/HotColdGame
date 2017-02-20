@@ -4134,6 +4134,13 @@ rc@~1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~1.0.4"
 
+react-addons-update@^15.4.2:
+  version "15.4.2"
+  resolved "https://registry.yarnpkg.com/react-addons-update/-/react-addons-update-15.4.2.tgz#43a9578e3b46bc5f7eed2ba52560dd57a8aff918"
+  dependencies:
+    fbjs "^0.8.4"
+    object-assign "^4.1.0"
+
 react-dev-utils@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-0.5.0.tgz#aedbf69cb1fbedb6f42350e4a988021f5cb4c493"

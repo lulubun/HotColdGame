@@ -3,18 +3,18 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/index';
 
 export class EnterGuess extends React.Component {
-  constructor() {
+  /*constructor() {
     super()
-    //this.onSubmit = this.onSubmit.bind(this)
-  }
+    this.onSubmit = this.onSubmit.bind(this)
+  }*/
 
   render() {
     return (
       <div className="enter_guess_box">
         <form onSubmit={(event) => {
           event.preventDefault();
-          this.props.addGuesses();
           const guessInput = event.target.guessBox.value;
+          this.props.addGuesses(guessInput);
           const abValNum = Math.abs(this.props.mysteryNum - guessInput);
           let tempMessage = '';
           if (abValNum === 0) {
@@ -22,15 +22,21 @@ export class EnterGuess extends React.Component {
           }
           else if (abValNum <= 5) {
             tempMessage = 'HOT!!'
+            this.props.newMessage(tempMessage)
+
           }
           else if (abValNum <= 10) {
             tempMessage = 'Kind of hot...'
+            this.props.newMessage(tempMessage)
           }
           else if (abValNum <= 15) {
-            tempMessage = 'Warmer'
+            tempMessage = 'Warm'
+            this.props.newMessage(tempMessage)
+
           }
           else {
             tempMessage = 'Cold!'
+            this.props.newMessage(tempMessage)
           }
         }}>
           <input type="text" name="guessBox"></input>

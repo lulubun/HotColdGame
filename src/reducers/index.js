@@ -2,6 +2,7 @@
 //reducers
 
 import * as actions from '../actions/index';
+import update from 'react-addons-update';
 
 const initialState = {
   guessCount: 0,
@@ -17,10 +18,10 @@ export const quizReducer = (state=initialState, action) => {
         return {...state, answer: Math.floor(Math.random() * 100) + 1 }
 
         case actions.STORE_GUESSES:
-        return {...state, oldGuesses:action.oldGuesses, guessCount: state.guessCount++}
+        return {...state, oldGuesses:update(state.oldGuesses, {$push: [action.storeGuesses]}), guessCount: state.guessCount + 1}
 
         case actions.DISPLAY_TEMP:
-        return {...state, tempText: action.temp}
+        return {...state, tempText: action.tempText}
 
         case actions.RESET_GAME:
         return {...state,
