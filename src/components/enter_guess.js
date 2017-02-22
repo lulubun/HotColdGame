@@ -3,11 +3,6 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/index';
 
 export class EnterGuess extends React.Component {
-  /*constructor() {
-    super()
-    this.onSubmit = this.onSubmit.bind(this)
-  }*/
-
   render() {
     return (
       <div className="enter_guess_box">
@@ -38,6 +33,7 @@ export class EnterGuess extends React.Component {
             tempMessage = 'Cold!'
             this.props.newMessage(tempMessage)
           }
+          event.target.guessBox.value = '';
         }}>
           <input type="text" name="guessBox"></input>
           <button type="submit">
@@ -50,7 +46,7 @@ export class EnterGuess extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    mysteryNum: state.answer
+    mysteryNum: state.quiz.answer
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -13,7 +13,7 @@ export class Temp extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  tempStatus: state.tempText
+  tempStatus: state.quiz.tempText
 });
 
 export default connect(mapStateToProps)(Temp);

@@ -14,7 +14,7 @@ export class GuessCount extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  count: state.guessCount
+  count: state.guesses.guessCount
 });
 
 export default connect(mapStateToProps)(GuessCount);

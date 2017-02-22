@@ -1,5 +1,5 @@
 import {createStore} from 'redux';
 
-import * as reducers from './reducers/index';
+import reducerCombiner from './reducers/index';
 
-export default createStore(reducers.quizReducer);
+export default createStore(reducerCombiner);

@@ -6,14 +6,14 @@ export class OldGuesses extends React.Component {
   render() {
     return (
       <div className="old_guesses_box">
-      <h4>{this.props.guesses}</h4>
+        {this.props.eachGuess}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, props) => ({
-  guesses: state.oldGuesses
+  eachGuess: state.guesses.eachGuess
 });
 
 export default connect(mapStateToProps)(OldGuesses);
