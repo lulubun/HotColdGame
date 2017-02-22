@@ -3,7 +3,7 @@ import * as actions from '../actions/index';
 const initialState =  {
   guessCount: 0,
   oldGuesses: [],
-  eachGuess: {}
+  eachGuess: []
 }
 
 const guesses = (state=initialState, action) => {
@@ -14,7 +14,7 @@ const guesses = (state=initialState, action) => {
     const eachGuessArray = [];
     const newGuessList = array.concat(addGuess);
     for (var i = 0; i < newGuessList.length; i++) {
-      eachGuessArray.push(newGuessList[i] + ' ')
+      eachGuessArray.concat(newGuessList[i] + ' ')
     }
     return {
       ...state,
