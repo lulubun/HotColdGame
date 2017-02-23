@@ -3,7 +3,6 @@ import * as actions from '../actions/index';
 const initialState =  {
   guessCount: 0,
   oldGuesses: [],
-  eachGuess: []
 }
 
 const guesses = (state=initialState, action) => {
@@ -11,14 +10,16 @@ const guesses = (state=initialState, action) => {
     case 'STORE_GUESSES':
     const addGuess = action.oldGuesses;
     const array = state.oldGuesses;
-    const eachGuessArray = [];
-    const newGuessList = array.concat(addGuess);
-    for (var i = 0; i < newGuessList.length; i++) {
-      eachGuessArray.concat(newGuessList[i] + ' ')
+    const nextStep = array.concat(addGuess);
+    function makeNewArray(item) {
+      var oneGuess = [item] + ' ';
+      return oneGuess
     }
+    const newGuessList = nextStep.map(makeNewArray);
+
     return {
       ...state,
-      eachGuess: eachGuessArray,
+      oldGuesses: newGuessList,
       guessCount: state.guessCount + 1
     }
 
