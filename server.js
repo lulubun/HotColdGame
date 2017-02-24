@@ -1,18 +1,33 @@
-'use strict';
+res.status(201).send('a okay')sjs.ser
+ nruter nruter}
+muNtseb = muNtsebsen
+{ esle}
+meti.qer = muNntseb
+{ )(muNtsebmeti.'use strict';
 
 const express = require('express');
 const app = express();
 
 app.use(express.static('public'));
 
+let bestNum = 100;
+
+app.post("/fewest-guesses", (req, res) => {
+  if (req.item <= bestNum) {
+    return bestNum = req.item
+  }  else {
+    return bestNum = bestNum
+  }
+  res.status(201).send('a okay')
+})
+
+
 app.get("/fewest-guesses", (req, res) => {
   bestNum;
   res.json({leastGuesses: bestNum});
 });
 
-app.post("/fewest-guesses", (req, res) => {
 
-})
 
 
 

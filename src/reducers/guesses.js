@@ -17,7 +17,6 @@ const guesses = (state=initialState, action) => {
       return oneGuess
     }
     const newGuessList = nextStep.map(makeNewArray);
-
     return {
       ...state,
       oldGuesses: newGuessList,

@@ -4,6 +4,7 @@ import * as actions from '../actions/index';
 
 export class EnterGuess extends React.Component {
   render() {
+    console.log(this.props.mysteryNum);
     return (
       <div className="enter_guess_box">
         <form onSubmit={(event) => {
