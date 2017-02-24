@@ -3,7 +3,7 @@ import * as actions from '../actions/index';
 const initialState =  {
   guessCount: 0,
   oldGuesses: [],
-  fewestGuesses: []
+  fewestGuesses:0
 }
 
 const guesses = (state=initialState, action) => {
@@ -33,7 +33,7 @@ const guesses = (state=initialState, action) => {
     }
 
     case 'FETCH_GUESSCOUNT':
-    const newBestNum = state.fewestGuesses.concat(action.fewestGuesses);
+    const newBestNum = action.fewestGuesses;
     return {
       ...state,
       fewestGuesses: newBestNum

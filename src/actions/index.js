@@ -1,20 +1,25 @@
-export const fetchBestGuessCount = fewestGuesses => dispatch => {
-    const url = `localhost:8080`;
+export function fetchBestGuessCount(fewestGuesses) {
+  return function(dispatch) {
+    const url = `http://localhost:8080/fewest-guesses`;
+    //return dispatch(fetchGuessCount(10));
+
+    //below line is crashing chrome find method to end fetch
     return fetch(url).then(response => {
-        if (!response.ok) {
-            const error = new Error(response.statusText)
-            error.response = response
-            throw error;
-        }
-        return response;
+      if (!response.ok) {
+          const error = new Error(response.statusText)
+          error.response = response
+          throw error;
+      }
+      return response;
     })
     .then(response => response.json())
-    .then(data =>
-        dispatch(fetchBestGuessCount(data.fewestGuesses))
-    )
-    .catch(error =>
-        dispatch(fetchBestGuessCount(fewestGuesses, error))
-    );
+    .then(data => {
+      dispatch(fetchBestGuessCount(data.fewestGuesses))
+    })
+    .catch(error => {
+      dispatch(fetchBestGuessCount(fewestGuesses, error))
+    });
+  }
 };
 
 export const GENERATE_NUMBER = 'GENERATE_NUMBER';
