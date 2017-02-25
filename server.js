@@ -1,10 +1,3 @@
-res.status(201).send('a okay')sjs.ser
- nruter nruter}
-muNtseb = muNtsebsen
-{ esle}
-meti.qer = muNntseb
-{ )(muNtsebmeti.'use strict';
-
 const express = require('express');
 const app = express();
 

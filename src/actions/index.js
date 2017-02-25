@@ -28,26 +28,12 @@ export const fetchGuessCount = (fewestGuesses) => ({
 });
 
 export function fetchBestGuessCount(fewestGuesses) {
-  return function(dispatch) {
-    const url = `http://localhost:8080/fewest_guesses`;
-    //return dispatch(fetchGuessCount(10));
+  return dispatch => {
+    const url = 'http://localhost:8080/fewest-guesses';
 
-    //below line is crashing chrome find method to end fetch
-    return fetch(url).then(response => {
-      if (!response.ok) {
-          const error = new Error(response.statusText)
-          error.response = response
-          throw error;
-      }
-      return response;
-    })
+    fetch(url)
     .then(response => response.json())
-    .then(data => {
-    dispatch(fetchBestGuessCount(data.fewestGuesses))
-    })
-    .catch(error => {
-        dispatch(fetchBestGuessCount(fewestGuesses, error))
-    });
-    return dispatch(fetchGuessCount())
+    .then(json => dispatch(fetchGuessCount(json.leastGuesses)))
+    .catch(ex =>  console.log(ex))
   }
 };
