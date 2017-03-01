@@ -1,28 +1,19 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
+const fewestGuesses = require('./models');
 
 app.use(express.static('public'));
 
-let bestNum = 100;
 
-app.post("/fewest-guesses", (req, res) => {
-  if (req.item <= bestNum) {
-    return bestNum = req.item
-  }  else {
-    return bestNum = bestNum
-  }
-  res.status(201).send('a okay')
+app.put("/fewest-guesses", jsonParser, (req, res) => {
+  res.json(fewestGuesses.update(req.body.newBestGuess));
 })
 
-
 app.get("/fewest-guesses", (req, res) => {
-  bestNum;
-  res.json({leastGuesses: bestNum});
+  res.json(fewestGuesses.get());
 });
-
-
-
-
 
 // listen for requests and log when you've started doing it
 app.listen(process.env.PORT || 8080, () => console.log(

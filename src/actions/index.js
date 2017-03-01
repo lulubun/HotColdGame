@@ -27,13 +27,30 @@ export const fetchGuessCount = (fewestGuesses) => ({
     fewestGuesses
 });
 
-export function fetchBestGuessCount(fewestGuesses) {
+export function fetchBestGuessCount() {
   return dispatch => {
     const url = 'http://localhost:8080/fewest-guesses';
-
     fetch(url)
     .then(response => response.json())
-    .then(json => dispatch(fetchGuessCount(json.leastGuesses)))
+    .then(data => dispatch(fetchGuessCount(data)))
     .catch(ex =>  console.log(ex))
+  }
+};
+
+export function sendBestGuessCount(newBestGuess) {
+  return dispatch => {
+    const url = 'http://localhost:8080/fewest-guesses';
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        newBestGuess
+      })
+    })
+    .then(response => response.json())
+    .then(data => dispatch(fetchGuessCount(data)))
+    .then(dispatch(newGame()))
   }
 };

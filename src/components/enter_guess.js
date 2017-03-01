@@ -14,7 +14,12 @@ export class EnterGuess extends React.Component {
           const abValNum = Math.abs(this.props.mysteryNum - guessInput);
           let tempMessage = '';
           if (abValNum === 0) {
-            this.props.restartAll()
+            if (this.props.numAnswer < this.props.oldNumAnswer) {
+              let sendingNum = this.props.numAnswer;
+              this.props.updateBestGuess(sendingNum)
+            } else {
+              this.props.restartAll()
+            }
           }
           else if (abValNum <= 5) {
             tempMessage = 'HOT!!'
@@ -47,13 +52,17 @@ export class EnterGuess extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    mysteryNum: state.quiz.answer
+  mysteryNum: state.quiz.answer,
+  numAnswer: state.guesses.guessCount,
+  oldNumAnswer: state.guesses.fewestGuesses
 });
 
 const mapDispatchToProps = (dispatch) => ({
   newMessage: (tempMessage) => dispatch(actions.displayTemp(tempMessage)),
 
   addGuesses: (guess) => dispatch(actions.storeGuesses(guess)),
+
+  updateBestGuess: (sendingNum) => dispatch(actions.sendBestGuessCount(sendingNum)),
 
   restartAll: () => dispatch(actions.newGame())
 })

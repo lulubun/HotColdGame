@@ -1,9 +1,9 @@
-import * as actions from '../actions/index';
+//import * as actions from '../actions/index';
 
 const initialState =  {
   guessCount: 0,
   oldGuesses: [],
-  fewestGuesses:0
+  fewestGuesses:100
 }
 
 const guesses = (state=initialState, action) => {

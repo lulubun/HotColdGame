@@ -31,3 +31,4 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(null, mapDispatchToProps)(Game);
+//mapStateToProps makes state, mapDispatchToProps calls an action
